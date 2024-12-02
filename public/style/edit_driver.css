@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ebebeb;
+    /* --primary-color: rgb(191, 241, 241); */
+    --secondary-color: #18181a;
+
+}
+
+@font-face {
+    font-family: poppin;
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype'),
+
+}
+
+@font-face {
+    font-family: mono;
+    src: url('../fonts/MartianMono-ExtraBold.ttf') format('truetype'),
+
+}
+
+@font-face {
+    font-family: tung;
+    src: url('../fonts/Tungsten-Bold.ttf') format('truetype'),
+
+}
+
+@font-face {
+    font-family: space;
+    src: url('../fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype'),
+
+}
+
+@font-face {
+    font-family: hel;
+    src: url('../fonts/helvectical/HelveticaNowDisplay-Medium.ttf') format('truetype'),
+
+}
+
+@font-face {
+    font-family: hel-thin;
+    src: url('../fonts/helvectical/HelveticaNowDisplay-Regular.ttf') format('truetype'),
+
+}
+
+
+html {
+    width: 100%;
+}
+
+html,
+body {
+    font-size: 24px;
+    overflow-x: clip;
+    background-color: var(--primary-color);
+    font-family: hel;
+}
+
+/* Base settings with font-size dependent on the viewport width */
+html {
+    font-size: 2vw; /* Base font size in px */
+}
+
+body {
+    font-size: 1rem; /* This will be 16px now based on html font size */
+}
+
+.hero{
+    background-color: var(--secondary-color);
+    min-height: 17vh;
+}
+/* General styling for the form and sections */
+.section-1 {
+    padding: 1.25rem; /* 20px */
+    background-color: #f4f4f4;
+}
+
+.input-con {
+    max-width: 33.33rem; /* 800px */
+    margin: 0 auto;
+}
+
+.input {
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 0.3125rem; /* 5px */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.5rem; /* 8px */
+    margin-top: 0.3125rem; /* 5px */
+    border: 1px solid #ccc;
+    border-radius: 0.25rem; /* 4px */
+   
+
+}
+input,textarea{
+    font-size: .6rem     ;
+}
+input::placeholder{
+    font-size: .6rem     ;
+}
+button {
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 0.25rem; /* 4px */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Styling for image containers */
+.input.img {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: .4rem  ;
+    border-radius: .4rem;
+}
+
+.input.img img {
+    display: none;
+    max-width: 12.5rem; /* 200px */
+    margin-top: 0.625rem; /* 10px */
+}
+
+.input.img input[type="file"] {
+    display: block;
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+/* Input field focus */
+input:focus, select:focus, textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+/* Optional: To give spacing between sections */
+.input-con > div {
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+
+
+
+
+
+
+
+/* Responsive adjustments */
+
+/* When the screen width is less than 768px (Tablets and smaller devices) */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Adjust font-size for smaller screens */
+    }
+    .input-con {
+        max-width: 100%; /* Allow form elements to take full width */
+        padding: 16px; /* Slightly reduce padding for small screens */
+    }
+    .section-1 {
+        padding: 16px;
+    }
+    button {
+        padding: 10px 20px; /* Adjust button padding for small screens */
+    }
+    .input {
+        margin-bottom: 16px; /* Increase bottom margin for better spacing */
+    }
+}
+
+/* When the screen width is less than 480px (Mobile devices) */
+@media (max-width: 480px) {
+    html {
+        font-size: 12px; /* Further reduce font-size for very small screens */
+    }
+    .section-1{
+        padding: 1.25rem 0.2rem;
+    }
+    .input-con {
+        max-width: 100%;
+        padding: 12px 8px; /* Adjust padding for mobile screens */
+    }
+    button {
+        padding: 8px 16px;
+    }
+    .input {
+        margin-bottom: 20px; /* Ensure input fields are well-spaced */
+    }
+    .input.img img {
+        max-width: 150px; /* Smaller image preview on mobile */
+    }
+    .input img input[type="file"] {
+        padding: 8px; /* Adjust file input padding for mobile */
+    }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="/style/add_driver.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indrive</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="hero">
+
+        </div>
+
+        <section class="section-1">
+            <form action="/add-driver" method="POST" enctype="multipart/form-data">
+                <div class="input-con">
+                    <div class="phone input">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone" placeholder="Enter Phone Number">
+                    </div>
+                    
+                    <div class="email input">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter Your Email">
+                    </div>
+                  
+                    <div class="city input">
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" placeholder="Enter City">
+                    </div>
+        
+                    <div class="user-id input">
+                        <label for="user-id">User ID</label>
+                        <input type="text" name="userId" id="user-id" placeholder="Enter User ID">
+                    </div>
+        
+                    <div class="reviewed-by input">
+                        <label for="reviewed-by">Reviewed By</label>
+                        <input type="text" name="reviewedBy" id="reviewed-by" placeholder="Enter Reviewed By">
+                    </div>
+        
+                    <div class="state input">
+                        <label for="state">State</label>
+                        <select name="state" id="state">
+                            <option value="accept">Accept</option>
+                            <option value="decline">Decline</option>
+                            <option value="idle">Idle</option>
+                        </select>
+                    </div>
+        
+                    <div class="created-date input">
+                        <label for="created-date">Created Date</label>
+                        <input type="text" name="createdDate" id="created-date" value="2021-10-19 03:45" readonly>
+                    </div>
+        
+                    <div class="transport-id input">
+                        <label for="transport-id">Transport ID</label>
+                        <input type="text" name="transportId" id="transport-id" placeholder="Enter Transport ID">
+                    </div>
+        
+                    <div class="input img photo">
+                        <label for="photo">Photo</label>
+                        <input type="file" name="photo" id="photo" onchange="previewImage(event, 'preview-photo')" aria-label="Upload photo">
+                        <img id="preview-photo" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+        
+                    <div class="first-name input">
+                        <label for="first-name">First Name</label>
+                        <input type="text" name="firstName" id="first-name" placeholder="Enter First Name">
+                    </div>
+        
+                    <div class="last-name input">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" name="lastName" id="last-name" placeholder="Enter Last Name">
+                    </div>
+                    <div class="recruitment-approval-date input">
+                        <label for="recruitment-approval-date">Recruitment Approval Date</label>
+                        <input type="datetime-local" name="recruitmentApprovalDate" id="recruitment-approval-date">
+                    </div>
+        
+                    <div class="date-of-recruitment input">
+                        <label for="date-of-recruitment">Date of Recruitment</label>
+                        <input type="datetime-local" name="dateOfRecruitment" id="date-of-recruitment">
+                    </div>
+        
+                    <div class="birth-date input">
+                        <label for="birth-date">Birth Date (Optional)</label>
+                        <input type="date" name="birthDate" id="birth-date">
+                    </div>
+        
+                    <div class="gender input">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other" selected>--</option>
+                        </select>
+                    </div>
+        
+                    <div class="driver-license input">
+                        <label for="driver-license">Driver's License Number</label>
+                        <input type="text" name="driverLicenseNumber" id="driver-license" placeholder="Enter Driver's License Number">
+                    </div>
+        
+                    <div class="input img license-front">
+                        <label for="license-front">Driver's License (Front)</label>
+                        <input type="file" name="license-front" id="license-front" onchange="previewImage(event, 'preview-license-front')" aria-label="Upload license front">
+                        <img id="preview-license-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+        
+                    <div class="expiry-date input">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="date" name="expiryDate" id="expiry-date">
+                    </div>
+        
+                    <div class="input img ID_confirm">
+                        <label for="ID_confirm">ID Confirmation Photo</label>
+                        <input type="file" name="ID_confirm" id="ID_confirm" onchange="previewImage(event, 'preview-ID-confirm')" aria-label="Upload ID confirmation photo">
+                        <img id="preview-ID-confirm" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+        
+                    <div class="input img cnic-front">
+                        <label for="cnic-front">CNIC (Front Side)</label>
+                        <input type="file" name="cnic-front" id="cnic-front" onchange="previewImage(event, 'preview-cnic-front')" aria-label="Upload CNIC front">
+                        <img id="preview-cnic-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+        
+                    <div class="input img cnic-back">
+                        <label for="cnic-back">CNIC (Back Side)</label>
+                        <input type="file" name="cnic-back" id="cnic-back" onchange="previewImage(event, 'preview-cnic-back')" aria-label="Upload CNIC back">
+                        <img id="preview-cnic-back" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+        
+                    <div class="cnic input">
+                        <label for="cnic">CNIC</label>
+                        <input type="text" name="cnic" id="cnic" placeholder="Enter CNIC">
+                    </div>
+        
+                    <div class="registration-plate input">
+                        <label for="registration-plate">Registration Plate</label>
+                        <input type="text" name="registrationPlate" id="registration-plate" placeholder="Enter Registration Plate">
+                    </div>
+        
+                    <div class="input img vehicle-photo">
+                        <label for="vehicle-photo">Photo of Your Vehicle</label>
+                        <input type="file" name="vehicle-photo" id="vehicle-photo" onchange="previewImage(event, 'preview-vehicle-photo')" aria-label="Upload vehicle photo">
+                        <img id="preview-vehicle-photo" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+        
+                    <div class="remarks input">
+                        <label for="remarks">Remarks</label>
+                        <textarea name="remarks" id="remarks" placeholder="Enter Remarks"></textarea>
+                    </div>
+        
+                    <button type="submit">ADD</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="/script/add_driver.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style/super_portal.css">
+</head>
+
+<body>
+    <main>
+        <div class="hero">
+            <!-- Add content for the hero section if needed -->
+
+            <h1 style="text-align: center;">ZUBAIR</h1>
+        </div>
+        <section class="section-1">
+            <div class="driver-list">
+                <!-- Header Row -->
+                <div class="driver-row header">
+                    <div class="driver-item">User ID</div>
+                    <div class="driver-item">Transport ID</div>
+                    <div class="driver-item">Service ID</div>
+                    <div class="driver-item">Phone</div>
+                    <div class="driver-item">First Name</div>
+                    <div class="driver-item">Last Name</div>
+                    <div class="driver-item">State</div>
+                    <div class="driver-item">Activity</div>
+                    <div class="driver-item">City</div>
+                    <div class="driver-item">Country</div>
+                    <div class="driver-item">Recruitment Approval Date</div>
+                    <div class="driver-item">Date of Recruitment</div>
+                    <div class="driver-item">Recruited</div>
+                    <div class="driver-item">Action</div>
+                </div>
+
+                <!-- Filter Row (same height as header) -->
+                <div class="driver-row filter">
+                    <div class="driver-item filter-item ">
+                        <input type="text" placeholder="Search User ID" id="filter-user-id">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Transport ID" id="filter-transport-id">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Service ID" id="filter-service-id">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Phone" id="filter-phone">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search First Name" id="filter-first-name">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Last Name" id="filter-last-name">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <select id="filter-state">
+                            <option value="">Select State</option>
+                            <option value="accept">Accept</option>
+                            <option value="decline">Decline</option>
+                            <option value="idle">Idle</option>
+                        </select>
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Activity" id="filter-activity">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search City" id="filter-city">
+                    </div>
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Country" id="filter-country">
+                    </div>
+                   
+                   
+                    <div class="driver-item date-item">
+                        <input type="date" id="filter-recruitment-approval-start" placeholder="Start Date">
+                        <p>TO</p>
+                        <input type="date" id="filter-recruitment-approval-end" placeholder="End Date">
+                    </div>
+                
+                    <!-- Date of Recruitment filter (start and end) -->
+                    <div class="driver-item date-item">
+                        <input type="date" id="filter-recruitment-date-start" placeholder="Start Date">
+                        <p>TO</p>
+
+                        <input type="date" id="filter-recruitment-date-end" placeholder="End Date">
+                    </div>
+                   
+                   
+                    <div class="driver-item filter-item">
+                        <input type="text" placeholder="Search Recruited" id="filter-recruited">
+                    </div>
+                    <div class="driver-item search">
+                        <button id="search-btn">Search</button>
+                        <i class="fa-solid fa-arrows-rotate  referesh"></i>
+                    </div>
+                </div>
+
+                <!-- Dynamic rows populated here -->
+                <% drivers.forEach(driver=> { %>
+                    <div class="driver-row">
+                        <div class="driver-item">
+                            <%= driver.userId %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.transportId %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.serviceId %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.phone %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.firstName %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.lastName %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.state %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.activity %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.city %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.country %>
+                        </div>
+                        <div class="driver-item">
+                            <!-- Format the recruitment approval date to local time -->
+                            <%= driver.recruitmentApprovalDate ? new
+                                Date(driver.recruitmentApprovalDate).toLocaleString('en-US', { timeZone: 'Asia/Karachi'
+                                }).replace(',', '' ).substring(0, 16) : '' %>
+                        </div>
+                        <div class="driver-item">
+                            <!-- Format the date of recruitment to local time -->
+                            <%= driver.dateOfRecruitment ? new Date(driver.dateOfRecruitment).toLocaleString('en-US', {
+                                timeZone: 'Asia/Karachi' }).replace(',', '' ).substring(0, 16) : '' %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.recruited %>
+                        </div>
+                        <div class="driver-item" data-driver-id="<%= driver._id %>"> 
+                            <button class="edit-btn" onclick="editDriver(this)">Edit</button>
+                        </div>
+                    </div>
+                <% }); %>
+
+
+
+            </div>
+
+
+        </section>
+    </main>
+
+    <script src="/script/super_portal.js"></script>
+</body>
+
+</html>

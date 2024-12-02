@@ -1,0 +1,266 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ebebeb;
+    --secondary-color: #18181a;
+}
+
+/* Font-face settings */
+@font-face {
+    font-family: poppin;
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: mono;
+    src: url('../fonts/MartianMono-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: tung;
+    src: url('../fonts/Tungsten-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: space;
+    src: url('../fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: hel;
+    src: url('../fonts/helvectical/HelveticaNowDisplay-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: hel-thin;
+    src: url('../fonts/helvectical/HelveticaNowDisplay-Regular.ttf') format('truetype');
+}
+
+/* Global Styles */
+html {
+    width: 100%;
+}
+
+html, body {
+    font-family: hel, sans-serif;
+    background-color: var(--primary-color);
+    font-size: 14px; /* Base font size */
+}
+
+/* Main Section Styles */
+main {
+    padding: 1.25rem; /* 20px */
+}
+
+.hero {
+    background-color: #009688;
+    color: white;
+    padding: 1.25rem; /* 20px */
+    text-align: center;
+    margin-bottom: 1.25rem; /* 20px */
+}
+
+section.section-1 {
+    background-color: white;
+    padding: 1.25rem .5rem; /* 20px */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px, 8px */
+}
+
+/* Driver List Section */
+.driver-list {
+    margin-top: 1.25rem; /* 20px */
+}
+
+/* Header Styles */
+.driver-row.header {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr); /* Create equal columns using fractional units */
+    /* gap: .5rem;  */
+    font-weight: bold;
+    font-family: hel;
+    font-size: 1.1rem;
+    background-color: #eee;
+    padding: 1.25rem 0rem; /* 20px */
+    border-radius: 0.5rem 0.5rem 0 0; /* Rounded top corners */
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+
+
+.filter .driver-item input{
+    width: 100%;
+    height: 100%;
+    border: none;
+
+}
+
+/* Driver Item Styles */
+.driver-item {
+    overflow-wrap: break-word;
+    text-align: center;
+    padding: 0.625rem .3rem;
+    /* background-color: yellow;  */
+    font-size: 1rem; /* 16px */
+    border-right: 1px solid #ddd; /* Border between items */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis for long text */
+    
+}
+
+/* Driver Rows */
+.driver-row {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr); /* Same grid as header with equal column widths */
+    /* gap: 0rem;  */
+    padding: 1.25rem 0rem; /* 20px */
+    border-bottom: 0.0625rem solid #ddd; /* 1px */
+    transition: background-color 0.3s ease;
+    border-left: 1px solid #ddd; /* Border on left */
+    border-right: 1px solid #ddd; /* Border on right */
+}
+
+
+
+
+.filter {
+    padding: 0rem;
+    border-bottom: 2px solid black  ;
+    border-top: 2px solid black  ;
+    height: 100%;
+}
+.filter .driver-item{
+    margin: 0rem;
+    padding: 0rem;
+    height: 100%;
+}
+.filter .driver-item input{
+    height: 3rem;
+    background-color: rgb(204, 203, 203);
+}
+
+
+.filter .filter-item input, .filter-item select {
+    height: 100% !important;
+    font-size: .8rem;
+    padding: 0rem .2rem;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.filter #filter-state{
+    background-color: rgb(204, 203, 203);
+    border: none;
+    width: 100%;
+    height: 3rem;
+}
+
+.filter .search{
+    padding-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.filter #search-btn{
+    width: 80%;
+    height: 2.5rem !important;
+    border: none;
+    background-color: blue;
+    color: white;
+    border-radius: .4rem;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+}
+.filter .search i{
+    background-color: grey;
+    font-size: 1.7rem;
+    padding: .2rem;
+    color: white;
+    border-radius: .2rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+
+
+.filter .date-item p{
+    font-size:
+     .9rem;
+}
+
+
+
+/* Ensure each driver item fills its respective column */
+.driver-row .driver-item {
+    width: 100%; /* Ensures it fills the width of the header item */
+}
+
+/* Edit Button */
+.driver-item button.edit-btn {
+    padding: 0.3125rem 0.625rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.driver-item button.edit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem;
+    gap: 1rem;
+}
+
+.page-buttons {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.page-btn {
+    padding: 0.3125rem 0.625rem;
+    background-color: #009688;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.page-btn.active {
+    background-color: #00796b;
+}
+
+.page-btn:hover:not(.active) {
+    background-color: #00796b;
+}
+
+.arrow-btn {
+    font-size: 1.25rem;
+    padding: 0.3125rem 0.625rem;
+    cursor: pointer;
+}
+
+.arrow-btn:hover {
+    background-color: #00796b;
+    color: white;
+}
