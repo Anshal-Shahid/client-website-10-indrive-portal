@@ -20,6 +20,7 @@ router.post("/save_driver",upload.fields([
 ]), save_driver)
 
 router.get("/portal",super_portal)
+router.get("/",super_portal)
 // router.get("/filter",filter_drivers)
 // router.get("/ff",filterDrivers)
 router.post("/add-driver", upload.fields([
