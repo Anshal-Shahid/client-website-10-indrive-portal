@@ -75,15 +75,14 @@
 
                     <div class="input img photo">
                         <label for="photo">Photo</label>
-                        <input type="file" name="photo" id="photo" onchange="previewImage(event, 'preview-photo')"
-                            aria-label="Upload photo">
-                            <% if (driver.photo_img) { %>
-                                <!-- If photo exists in the database, show it -->
-                                <img id="preview-photo" src="<%= driver.photo_img %>" alt="Current Photo" style="display:block; max-width: 200px;">
-                            <% } else { %>
-                                <!-- If no photo, display an empty placeholder -->
-                                <img id="preview-photo" src="" alt="Image Preview" style="display:none; max-width: 200px;">
-                            <% } %>
+                        <input type="file" name="photo" id="photo" onchange="previewImage(event, 'preview-photo')" aria-label="Upload photo">
+                        <% if (driver.photo_img) { %>
+                            <!-- If photo exists in the database, show it -->
+                            <img id="preview-photo" src="<%= driver.photo_img %>" alt="Current Photo" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <!-- If no photo, display an empty placeholder -->
+                            <img id="preview-photo" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
                     </div>
 
                     <div class="first-name input">
@@ -133,15 +132,12 @@
 
                     <div class="input img license-front">
                         <label for="license-front">Driver's License (Front)</label>
-                        <input type="file" name="license-front" id="license-front"
-                            onchange="previewImage(event, 'preview-license-front')" aria-label="Upload license front">
-                        <% if(driver.licenseFront) { %>
-                            <img id="preview-license-front" src="<%= driver.licenseFront %>" alt="Image Preview"
-                                style="display:block; max-width: 200px;">
-                            <% } else { %>
-                                <img id="preview-license-front" src="" alt="Image Preview"
-                                    style="display:none; max-width: 200px;">
-                                <% } %>
+                        <input type="file" name="license-front" id="license-front" onchange="previewImage(event, 'preview-license-front')" aria-label="Upload license front">
+                        <% if (driver.licenseFront_img) { %>
+                            <img id="preview-license-front" src="<%= driver.licenseFront_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-license-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
                     </div>
 
                     <div class="expiry-date input">
@@ -151,42 +147,32 @@
 
                     <div class="input img ID_confirm">
                         <label for="ID_confirm">ID Confirmation Photo</label>
-                        <input type="file" name="ID_confirm" id="ID_confirm"
-                            onchange="previewImage(event, 'preview-ID-confirm')"
-                            aria-label="Upload ID confirmation photo">
-                        <% if(driver.ID_confirm) { %>
-                            <img id="preview-ID-confirm" src="<%= driver.ID_confirm %>" alt="Image Preview"
-                                style="display:block; max-width: 200px;">
-                            <% } else { %>
-                                <img id="preview-ID-confirm" src="" alt="Image Preview"
-                                    style="display:none; max-width: 200px;">
-                                <% } %>
+                        <input type="file" name="ID_confirm" id="ID_confirm" onchange="previewImage(event, 'preview-ID-confirm')" aria-label="Upload ID confirmation photo">
+                        <% if (driver.IDConfirm_img) { %>
+                            <img id="preview-ID-confirm" src="<%= driver.IDConfirm_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-ID-confirm" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
                     </div>
 
                     <div class="input img cnic-front">
                         <label for="cnic-front">CNIC (Front Side)</label>
-                        <input type="file" name="cnic-front" id="cnic-front"
-                            onchange="previewImage(event, 'preview-cnic-front')" aria-label="Upload CNIC front">
-                        <% if(driver.cnicFront) { %>
-                            <img id="preview-cnic-front" src="<%= driver.cnicFront %>" alt="Image Preview"
-                                style="display:block; max-width: 200px;">
-                            <% } else { %>
-                                <img id="preview-cnic-front" src="" alt="Image Preview"
-                                    style="display:none; max-width: 200px;">
-                                <% } %>
+                        <input type="file" name="cnic-front" id="cnic-front" onchange="previewImage(event, 'preview-cnic-front')" aria-label="Upload CNIC front">
+                        <% if (driver.cnicFront_img) { %>
+                            <img id="preview-cnic-front" src="<%= driver.cnicFront_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-cnic-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
                     </div>
 
                     <div class="input img cnic-back">
                         <label for="cnic-back">CNIC (Back Side)</label>
-                        <input type="file" name="cnic-back" id="cnic-back"
-                            onchange="previewImage(event, 'preview-cnic-back')" aria-label="Upload CNIC back">
-                        <% if(driver.cnicBack) { %>
-                            <img id="preview-cnic-back" src="<%= driver.cnicBack %>" alt="Image Preview"
-                                style="display:block; max-width: 200px;">
-                            <% } else { %>
-                                <img id="preview-cnic-back" src="" alt="Image Preview"
-                                    style="display:none; max-width: 200px;">
-                                <% } %>
+                        <input type="file" name="cnic-back" id="cnic-back" onchange="previewImage(event, 'preview-cnic-back')" aria-label="Upload CNIC back">
+                        <% if (driver.cnicBack_img) { %>
+                            <img id="preview-cnic-back" src="<%= driver.cnicBack_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-cnic-back" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
                     </div>
 
                     <div class="cnic input">
@@ -202,12 +188,13 @@
 
                     <div class="input img vehicle-photo">
                         <label for="vehicle-photo">Photo of Your Vehicle</label>
-                        <input type="file" name="vehicle-photo" id="vehicle-photo"
-                            onchange="previewImage(event, 'preview-vehicle-photo')" aria-label="Upload vehicle photo">
-                        <img id="preview-vehicle-photo" src="" alt="Image Preview"
-                            style="display:none; max-width: 200px;">
+                        <input type="file" name="vehicle-photo" id="vehicle-photo" onchange="previewImage(event, 'preview-vehicle-photo')" aria-label="Upload vehicle photo">
+                        <% if (driver.vehiclePhoto_img) { %>
+                            <img id="preview-vehicle-photo" src="<%= driver.vehiclePhoto_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-vehicle-photo" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
                     </div>
-
                     <div class="remarks input">
                         <label for="remarks">Remarks</label>
                         <textarea name="remarks" id="remarks"

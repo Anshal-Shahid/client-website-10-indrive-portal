@@ -37,7 +37,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
 
 
 
-document.querySelector(".referesh").addEventListener("click", () => {
+document.querySelector(".refresh").addEventListener("click", () => {
     // Redirect to base route without filters
     window.location.href = `/portal`;
 });
