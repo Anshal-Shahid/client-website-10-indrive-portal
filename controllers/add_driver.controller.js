@@ -85,7 +85,7 @@ const add_driver = asyncHandler(async (req, res) => {
                 try {
                     const cloudinaryResponse = await new Promise((resolve, reject) => {
                         const uploadStream = cloudinary.uploader.upload_stream(
-                            { folder: "profile-images" },
+                            { folder: "driver-images" },
                             (error, result) => {
                                 if (error) {
                                     reject(new Error(`Cloudinary upload failed: ${error.message}`));
@@ -149,4 +149,4 @@ const add_driver_page = (req, res) => {
     res.render("add_driver.ejs");
 };
 
-module.exports = { add_driver,  add_driver_page };
+module.exports = { add_driver, add_driver_page };

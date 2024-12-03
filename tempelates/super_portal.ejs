@@ -17,6 +17,16 @@
             <h1 style="text-align: center;">ZUBAIR</h1>
         </div>
         <section class="section-1">
+            <div class="section-1-header">
+                <div class="text">
+
+                </div>
+
+                <div class="btn">
+                    <button onclick="addDriver()">Add</button>
+                </div>
+            </div>
+
             <div class="driver-list">
                 <!-- Header Row -->
                 <div class="driver-row header">
@@ -93,50 +103,143 @@
                 </div>
 
                 <!-- Dynamic Rows -->
-                <% drivers.forEach(driver => { %>
+                <% drivers.forEach(driver=> { %>
                     <div class="driver-row">
-                        <div class="driver-item"><%= driver.userId %></div>
-                        <div class="driver-item"><%= driver.transportId %></div>
-                        <div class="driver-item"><%= driver.serviceId %></div>
-                        <div class="driver-item"><%= driver.phone %></div>
-                        <div class="driver-item"><%= driver.firstName %></div>
-                        <div class="driver-item"><%= driver.lastName %></div>
-                        <div class="driver-item"><%= driver.state %></div>
-                        <div class="driver-item"><%= driver.activity %></div>
-                        <div class="driver-item"><%= driver.city %></div>
-                        <div class="driver-item"><%= driver.country %></div>
                         <div class="driver-item">
-                            <%= driver.recruitmentApprovalDate ? new Date(driver.recruitmentApprovalDate).toLocaleString('en-US', { timeZone: 'Asia/Karachi' }).replace(',', '').substring(0, 16) : '' %>
+                            <%= driver.userId %>
                         </div>
                         <div class="driver-item">
-                            <%= driver.dateOfRecruitment ? new Date(driver.dateOfRecruitment).toLocaleString('en-US', { timeZone: 'Asia/Karachi' }).replace(',', '').substring(0, 16) : '' %>
+                            <%= driver.transportId %>
                         </div>
-                        <div class="driver-item"><%= driver.recruited %></div>
+                        <div class="driver-item">
+                            <%= driver.serviceId %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.phone %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.firstName %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.lastName %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.state %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.activity %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.city %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.country %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.recruitmentApprovalDate ? new
+                                Date(driver.recruitmentApprovalDate).toLocaleString('en-US', { timeZone: 'Asia/Karachi'
+                                }).replace(',', '' ).substring(0, 16) : '' %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.dateOfRecruitment ? new Date(driver.dateOfRecruitment).toLocaleString('en-US', {
+                                timeZone: 'Asia/Karachi' }).replace(',', '' ).substring(0, 16) : '' %>
+                        </div>
+                        <div class="driver-item">
+                            <%= driver.recruited %>
+                        </div>
                         <div class="driver-item" data-driver-id="<%= driver._id %>">
                             <button class="edit-btn" onclick="editDriver(this)">Edit</button>
                         </div>
                     </div>
-                <% }); %>
+                    <% }); %>
+            </div>
+        </section>
+
+        <section class="section-2">
+            <!-- Mobile Driver List -->
+            <div class="header-div">
+                <button class="add-btn" onclick="addDriver()">Add</button>
+                <button class="search-btn" onclick="openSearchPopup()">Search</button>
+            </div>
+
+            <div class="mobile-driver-list">
+                <% drivers.forEach(driver=> { %>
+                    <div class="mobile-driver">
+                        <div class="driver-info">
+                            <div><strong>User ID:</strong>
+                                <%= driver.userId %>
+                            </div>
+                            <div><strong>Phone:</strong>
+                                <%= driver.phone %>
+                            </div>
+                            <div><strong>Name:</strong>
+                                <%= driver.firstName %>
+                                    <%= driver.lastName %>
+                            </div>
+                            <div><strong>State:</strong>
+                                <%= driver.state %>
+                            </div>
+                            <div><strong>City:</strong>
+                                <%= driver.city %>
+                            </div>
+                        </div>
+                        <div class="driver-item" data-driver-id="<%= driver._id %>">
+                            <button class="edit-btn" onclick="editDriver(this)">Edit</button>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+
+            <!-- Search Popup -->
+            <div class="search-popup" id="searchPopup">
+                <div class="popup-content">
+                    <h3>Filter Drivers</h3>
+                    <form id="searchForm">
+                        <label for="popup-user-id">User ID:</label>
+                        <input type="text" id="popup-user-id" placeholder="Enter User ID">
+
+                        <label for="popup-phone">Phone:</label>
+                        <input type="text" id="popup-phone" placeholder="Enter Phone">
+
+                        <label for="popup-first-name">First Name:</label>
+                        <input type="text" id="popup-first-name" placeholder="Enter First Name">
+
+                        <label for="popup-last-name">Last Name:</label>
+                        <input type="text" id="popup-last-name" placeholder="Enter Last Name">
+
+                        <label for="popup-state">State:</label>
+                        <select id="popup-state">
+                            <option value="">Select State</option>
+                            <option value="accept">Accept</option>
+                            <option value="decline">Decline</option>
+                            <option value="idle">Idle</option>
+                        </select>
+
+                        <label for="popup-city">City:</label>
+                        <input type="text" id="popup-city" placeholder="Enter City">
+
+                        <button type="button" onclick="submitSearch()">Find</button>
+                        <button type="button" class="close-btn" onclick="closeSearchPopup()">Close</button>
+                    </form>
+                </div>
             </div>
         </section>
 
         <!-- Pagination -->
         <div class="pagination">
-            <% if (currentPage > 1) { %>
+            <% if (currentPage> 1) { %>
                 <a href="?page=<%= currentPage - 1 %>" class="arrow">&laquo;</a>
-            <% } %>
-            <% 
-                const startPage = Math.max(1, currentPage - 5);
-                const endPage = Math.min(totalPages, startPage + 9); 
-            %>
-            <% for (let i = startPage; i <= endPage; i++) { %>
-                <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
-                    <%= i %>
-                </a>
-            <% } %>
-            <% if (currentPage < totalPages) { %>
-                <a href="?page=<%= currentPage + 1 %>" class="arrow">&raquo;</a>
-            <% } %>
+                <% } %>
+                    <% const startPage=Math.max(1, currentPage - 5); const endPage=Math.min(totalPages, startPage + 9);
+                        %>
+                        <% for (let i=startPage; i <=endPage; i++) { %>
+                            <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                                <%= i %>
+                            </a>
+                            <% } %>
+                                <% if (currentPage < totalPages) { %>
+                                    <a href="?page=<%= currentPage + 1 %>" class="arrow">&raquo;</a>
+                                    <% } %>
         </div>
     </main>
     <script src="/script/super_portal.js"></script>
