@@ -4,6 +4,11 @@ const Driver = require("../model/driverModel.js");
 const super_portal = asyncHandler(async (req, res) => {
     const filters = {};
 
+    // Pagination variables
+    const limit = 20; // Number of drivers per page
+    const page = parseInt(req.query.page) || 1; // Current page number (default to 1)
+    const skip = (page - 1) * limit; // Skip records for the current page
+
     // Add filters based on query parameters
     if (req.query.userId) filters.userId = req.query.userId;
     if (req.query.transportId) filters.transportId = req.query.transportId;
@@ -22,10 +27,7 @@ const super_portal = asyncHandler(async (req, res) => {
         const startApprovalDate = new Date(req.query.recruitmentApprovalDateStart);
         const endApprovalDate = new Date(req.query.recruitmentApprovalDateEnd);
 
-        // Fix time to the start of the day for the start date
         startApprovalDate.setHours(0, 0, 0, 0);
-        
-        // Fix time to the end of the day for the end date
         endApprovalDate.setHours(23, 59, 59, 999);
 
         filters.recruitmentApprovalDate = {
@@ -39,10 +41,7 @@ const super_portal = asyncHandler(async (req, res) => {
         const startRecruitmentDate = new Date(req.query.dateOfRecruitmentStart);
         const endRecruitmentDate = new Date(req.query.dateOfRecruitmentEnd);
 
-        // Fix time to the start of the day for the start date
         startRecruitmentDate.setHours(0, 0, 0, 0);
-
-        // Fix time to the end of the day for the end date
         endRecruitmentDate.setHours(23, 59, 59, 999);
 
         filters.dateOfRecruitment = {
@@ -51,11 +50,23 @@ const super_portal = asyncHandler(async (req, res) => {
         };
     }
 
-    // Fetch drivers from the database
-    const drivers = await Driver.find(filters);
+    // Fetch the total count of drivers matching the filters
+    const totalDrivers = await Driver.countDocuments(filters);
+    const totalPages = Math.ceil(totalDrivers / limit); // Calculate total number of pages
 
-    // Render the EJS template with the filtered drivers
-    res.render("super_portal", { drivers });
+    // Fetch drivers with pagination and sort by creation date (newest first)
+    const drivers = await Driver.find(filters)
+        .sort({ createdAt: -1 }) // Sort in descending order by createdAt
+        .skip(skip)
+        .limit(limit);
+
+    // Render the EJS template with the filtered drivers and pagination data
+    res.render("super_portal", {
+        drivers,
+        currentPage: page, // The current page number
+        totalPages,        // Total number of pages
+        limit              // Number of drivers per page
+    });
 });
 
 module.exports = { super_portal };
