@@ -11,14 +11,21 @@
 <body>
 
     <main>
-        <div class="hero"></div>
-        <div class="heading">
-            <p>
-                User ID: <%= driver.userId %>
+        <div class="hero">
+            <div class="text">
+                <h4></h4>
+                <p>
+                    User ID: <%= driver.userId %>
+                </p>
+            </div>
+            <div class="btns">
+                <a href="/">
 
-
-            </p>
+                    <button>Home</button>
+                </a>
+            </div>
         </div>
+     
         <section class="section-1">
             <form action="/save_driver" method="POST" enctype="multipart/form-data">
                 <div class="input-con">
@@ -103,11 +110,11 @@
                             value="<%= driver.recruitmentApprovalDate %>">
                     </div>
 
-                    <div class="date-of-recruitment input">
+                    <!-- <div class="date-of-recruitment input">
                         <label for="date-of-recruitment">Date of Recruitment</label>
                         <input type="datetime-local" name="dateOfRecruitment" id="date-of-recruitment"
                             value="<%= driver.dateOfRecruitment %>">
-                    </div>
+                    </div> -->
 
                     <div class="birth-date input">
                         <label for="birth-date">Birth Date (Optional)</label>
@@ -137,6 +144,15 @@
                             <img id="preview-license-front" src="<%= driver.licenseFront_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
                         <% } else { %>
                             <img id="preview-license-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
+                    </div>
+                    <div class="input img license-back">
+                        <label for="license-back">Driver's License (Back)</label>
+                        <input type="file" name="license-back" id="license-back" onchange="previewImage(event, 'preview-license-back')" aria-label="Upload license back">
+                        <% if (driver.licenseBack_img) { %>
+                            <img id="preview-license-back" src="<%= driver.licenseBack_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-license-back" src="" alt="Image Preview" style="display:none; max-width: 200px;">
                         <% } %>
                     </div>
 

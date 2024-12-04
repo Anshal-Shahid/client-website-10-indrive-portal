@@ -13,7 +13,12 @@
 
     <main>
         <div class="hero">
+            <div class="btn">
+                <a href="/">
 
+                    <button>Home</button>
+                </a>
+            </div>
         </div>
 
         <section class="section-1">
@@ -83,10 +88,10 @@
                         <input type="datetime-local" name="recruitmentApprovalDate" id="recruitment-approval-date">
                     </div>
         
-                    <div class="date-of-recruitment input">
+                    <!-- <div class="date-of-recruitment input">
                         <label for="date-of-recruitment">Date of Recruitment</label>
                         <input type="datetime-local" name="dateOfRecruitment" id="date-of-recruitment">
-                    </div>
+                    </div> -->
         
                     <div class="birth-date input">
                         <label for="birth-date">Birth Date (Optional)</label>
@@ -112,6 +117,12 @@
                         <input type="file" name="license-front" id="license-front" onchange="previewImage(event, 'preview-license-front')" aria-label="Upload license front">
                         <img id="preview-license-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
                     </div>
+                    <div class="input img license-back">
+                        <label for="license-back">Driver's License (Back)</label>
+                        <input type="file" name="license-back" id="license-back" onchange="previewImage(event, 'preview-license-back')" aria-label="Upload license back">
+                        <img id="preview-license-back" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                    </div>
+                    
         
                     <div class="expiry-date input">
                         <label for="expiry-date">Expiry Date</label>

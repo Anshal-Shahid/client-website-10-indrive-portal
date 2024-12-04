@@ -46,40 +46,137 @@ html {
     width: 100%;
 }
 
-html, body {
+html,
+body {
     font-family: hel, sans-serif;
     background-color: var(--primary-color);
-    font-size: 14px; /* Base font size */
+    font-size: 14px;
+    /* Base font size */
+}
+
+
+@media (max-width:1000px) {
+
+    html,
+    body {
+        font-family: hel, sans-serif;
+        background-color: var(--primary-color);
+        font-size: 11px;
+        /* Base font size */
+    }
 }
 
 /* Main Section Styles */
 main {
-    padding: 1.25rem; /* 20px */
+    padding: 1.25rem;
+    /* 20px */
 }
 
 .hero {
-    background-color: #009688;
-    color: white;
-    padding: 1.25rem; /* 20px */
-    text-align: center;
-    margin-bottom: 1.25rem; /* 20px */
-}
+    background-color: #5cb85c;
 
-section.section-1 {
-    background-color: white;
-    padding: 1.25rem .5rem; /* 20px */
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px, 8px */
-}
-
-
-.section-1-header{
-    display: flex;
+    min-height: 12rem;
     flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: space-between; */
+    padding: .7rem 2rem;
+    padding-bottom: 1rem;
+}
+
+.heading {
+    text-align: center;
+    width: 100%;
+    font-family: hel-thin;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+
+    /* text-decoration: underline; */
+}
+
+.heading h1 {
+    padding: 0rem 1.7rem;
+    border-radius: 5rem;
+    background-color: white;
+    color: black;
+    width: fit-content;
+}
+
+
+
+.hero button {
+    padding: 0.525rem 1.25rem;
+    /* 10px 20px */
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 0.25rem;
+    /* 4px */
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-family: hel;
+
+    &:hover {
+        background-color: rgb(219, 219, 219);
+    }
+}
+
+.hero .text {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    height: 14vh;
+    padding-top: 2rem;
+    text-align: left;
+
+}
+
+.hero .text .sub-text-1 {
+    margin-top: auto;
+    /* display: flex;
+    align-items: start;
+    flex-direction: column; */
+    text-align: left;
+}
+
+.hero .text .sub-text-2 {
+    display: flex;
+    align-items: end;
+    gap: .5rem;
+}
+
+.hero .text p {
+    margin-top: auto;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: normal;
+    position: relative;
+    font-family: hel-thin;
+    /* left: 8rem; */
+}
+
+
+
+
+
+.section-1-header {
+    display: flex;
+    justify-content: space-between;
     gap: 1rem;
     margin-bottom: 2rem;
 }
 
-.section-1-header .btn button{
+.section-1-header .text {
+    font-size: 1.5rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.section-1-header .btn button {
     padding: 0.5rem 1rem;
     font-size: 1.9rem;
     position: relative;
@@ -102,27 +199,31 @@ section.section-1 {
 
 /* Driver List Section */
 .section-1 .driver-list {
-    margin-top: 1.25rem; /* 20px */
+    margin-top: 1.25rem;
+    /* 20px */
 }
 
 /* Header Styles */
 .section-1 .driver-row.header {
     display: grid;
-    grid-template-columns: repeat(14, 1fr); /* Create equal columns using fractional units */
+    grid-template-columns: repeat(14, 1fr);
+    /* Create equal columns using fractional units */
     /* gap: .5rem;  */
     font-weight: bold;
     font-family: hel;
     font-size: 1.1rem;
     background-color: #eee;
-    padding: 1.25rem 0rem; /* 20px */
-    border-radius: 0.5rem 0.5rem 0 0; /* Rounded top corners */
+    padding: 1.25rem 0rem;
+    /* 20px */
+    border-radius: 0.5rem 0.5rem 0 0;
+    /* Rounded top corners */
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
 }
 
 
 
-.section-1 .filter .driver-item input{
+.section-1 .filter .driver-item input {
     width: 100%;
     height: 100%;
     border: none;
@@ -135,23 +236,32 @@ section.section-1 {
     text-align: center;
     padding: 0.625rem .3rem;
     /* background-color: yellow;  */
-    font-size: 1rem; /* 16px */
-    border-right: 1px solid #ddd; /* Border between items */
-    overflow: hidden; /* Hide overflowed text */
-    text-overflow: ellipsis; /* Show ellipsis for long text */
-    
+    font-size: 1rem;
+    /* 16px */
+    border-right: 1px solid #ddd;
+    /* Border between items */
+    overflow: hidden;
+    /* Hide overflowed text */
+    text-overflow: ellipsis;
+    /* Show ellipsis for long text */
+
 }
 
 /* Driver Rows */
 .section-1 .driver-row {
     display: grid;
-    grid-template-columns: repeat(14, 1fr); /* Same grid as header with equal column widths */
+    grid-template-columns: repeat(14, 1fr);
+    /* Same grid as header with equal column widths */
     /* gap: 0rem;  */
-    padding: 1.25rem 0rem; /* 20px */
-    border-bottom: 0.0625rem solid #ddd; /* 1px */
+    padding: 1.25rem 0rem;
+    /* 20px */
+    border-bottom: 0.0625rem solid #ddd;
+    /* 1px */
     transition: background-color 0.3s ease;
-    border-left: 1px solid #ddd; /* Border on left */
-    border-right: 1px solid #ddd; /* Border on right */
+    border-left: 1px solid #c6c5c5;
+    /* Border on left */
+    border-right: 1px solid #c6c5c5;
+    /* Border on right */
 }
 
 
@@ -159,22 +269,25 @@ section.section-1 {
 
 .section-1 .filter {
     padding: 0rem;
-    border-bottom: 2px solid black  ;
-    border-top: 2px solid black  ;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
     height: 100%;
 }
-.section-1 .filter .driver-item{
+
+.section-1 .filter .driver-item {
     margin: 0rem;
     padding: 0rem;
     height: 100%;
 }
-.section-1 .filter .driver-item input{
+
+.section-1 .filter .driver-item input {
     height: 3rem;
     background-color: rgb(204, 203, 203);
 }
 
 
-.section-1 .filter .filter-item input, .filter-item select {
+.section-1 .filter .filter-item input,
+.filter-item select {
     height: 100% !important;
     font-size: .8rem;
     padding: 0rem .2rem;
@@ -182,14 +295,14 @@ section.section-1 {
     overflow-wrap: break-word;
 }
 
-.section-1 .filter #filter-state{
+.section-1 .filter #filter-state {
     background-color: rgb(204, 203, 203);
     border: none;
     width: 100%;
     height: 3rem;
 }
 
-.section-1 .filter .search{
+.section-1 .filter .search {
     padding-top: .5rem;
     display: flex;
     flex-direction: column;
@@ -197,7 +310,7 @@ section.section-1 {
     justify-content: space-around;
 }
 
-.section-1 .filter #search-btn{
+.section-1 .filter #search-btn {
     width: 80%;
     height: 2.5rem !important;
     border: none;
@@ -205,18 +318,20 @@ section.section-1 {
     color: white;
     border-radius: .4rem;
 
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
 
 }
-.section-1 .filter .search i{
+
+.section-1 .filter .search i {
     background-color: grey;
     font-size: 1.7rem;
     padding: .2rem;
     color: white;
     border-radius: .2rem;
-    &:hover{
+
+    &:hover {
         cursor: pointer;
     }
 }
@@ -224,17 +339,33 @@ section.section-1 {
 
 
 
-.section-1 .filter .date-item p{
+.section-1 .filter .date-item p {
     font-size:
-     .9rem;
+        .9rem;
 }
 
 
 
 /* Ensure each driver item fills its respective column */
 .section-1 .driver-row .driver-item {
-    width: 100%; /* Ensures it fills the width of the header item */
+    width: 100%;
+    /* Ensures it fills the width of the header item */
 }
+
+.section-1 .driver-row:nth-child(even) {
+    background-color: #fbfbfb;
+    /* Grey color for even rows */
+}
+
+.section-1 .driver-row:nth-child(odd) {
+    background-color: #ffffff;
+    /* White color for odd rows */
+}
+
+.section-1 .date {
+    font-size: .9rem;
+}
+
 
 /* Edit Button */
 .section-1 .driver-item button.edit-btn {
@@ -303,12 +434,14 @@ section.section-1 {
     margin: 20px 0;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    padding: .2rem;
 }
 
 .pagination a {
     text-decoration: none;
     padding: 10px 15px;
-    border: 1px solid #ccc;
+    border: 2px solid #a8a7a7;
     color: #333;
     border-radius: 5px;
     transition: background 0.3s;
@@ -328,31 +461,35 @@ section.section-1 {
 .pagination .arrow {
     font-size: 16px;
     font-weight: bold;
+    background-color: #007bff;
+    color: white;
 }
 
-.section-2{
+.section-2 {
     display: none;
     font-size: 24px;
 }
 
 
 @media (max-width:800px) {
-    .section-1{
+    .section-1 {
         display: none;
     }
-    .section-2{
+
+    .section-2 {
         display: block;
         display: flex;
         flex-direction: column;
         gap: .8rem;
     }
+
     .mobile-driver-list {
         display: flex;
         flex-direction: column;
-        gap: 1em;
+        gap: .8em;
         /* padding: em; */
     }
-    
+
     .mobile-driver {
         display: flex;
         justify-content: space-between;
@@ -363,7 +500,7 @@ section.section-1 {
         padding: 1em;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+
     .driver-info {
         display: flex;
         flex-direction: column;
@@ -371,12 +508,12 @@ section.section-1 {
         font-size: 14px;
         line-height: 1.4;
     }
-    
+
     .edit-button {
         display: flex;
         align-items: center;
     }
-    
+
     .edit-btn {
         padding: 0.5em 1em;
         font-size: 14px;
@@ -387,7 +524,7 @@ section.section-1 {
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-    
+
     .edit-btn:hover {
         background-color: #0056b3;
     }
@@ -402,8 +539,8 @@ section.section-1 {
         background-color: #f1f1f1;
         border-bottom: 1px solid #ddd;
     }
-    
-    .section-2 .add-btn, 
+
+    .section-2 .add-btn,
     .section-2 .search-btn {
         padding: 0.5rem 1rem;
         font-size: 14px;
@@ -414,16 +551,16 @@ section.section-1 {
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-    
-    .section-2 .add-btn:hover, 
+
+    .section-2 .add-btn:hover,
     .section-2 .search-btn:hover {
         background-color: #0056b3;
     }
-    
+
     .section-2 .mobile-driver-list {
         /* margin: 1rem; */
     }
-    
+
     .section-2 .mobile-driver {
         display: flex;
         justify-content: space-between;
@@ -435,17 +572,18 @@ section.section-1 {
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+
     .section-2 .driver-info {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
     }
-    .section-2 .mobile-driver .driver-item{
+
+    .section-2 .mobile-driver .driver-item {
         /* height: 100%; */
         align-self: flex-start;
     }
-    
+
     .section-2 .edit-btn {
         padding: 0.5rem 1rem;
         font-size: 14px;
@@ -456,11 +594,11 @@ section.section-1 {
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-    
+
     .section-2 .edit-btn:hover {
         background-color: #218838;
     }
-    
+
     .section-2 .search-popup {
         display: none;
         position: fixed;
@@ -475,30 +613,30 @@ section.section-1 {
         width: 90%;
         max-width: 500px;
     }
-    
+
     .section-2 .popup-content {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .section-2 .popup-content h3 {
         margin-bottom: 1rem;
     }
-    
+
     .section-2 .popup-content label {
         font-weight: bold;
         margin-bottom: 0.5rem;
     }
-    
-    .section-2 .popup-content input, 
+
+    .section-2 .popup-content input,
     .section-2 .popup-content select {
         padding: 0.5rem;
         border: 1px solid #ddd;
         border-radius: 4px;
         width: 100%;
     }
-    
+
     .section-2 .popup-content button {
         padding: 0.5rem 1rem;
         font-size: 14px;
@@ -509,19 +647,169 @@ section.section-1 {
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-    
+
     .section-2 .popup-content button:hover {
         background-color: #0056b3;
     }
-    
+
     .section-2 .popup-content .close-btn {
         background-color: #dc3545;
     }
-    
+
     .section-2 .popup-content .close-btn:hover {
         background-color: #c82333;
     }
-    
-    
-    
+
+    .pagination a {
+        text-decoration: none;
+        padding: 7px 10px;
+        border: 1px solid #ccc;
+        color: #333;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+
+
+
+    .section-2 .mobile-driver div {
+        font-size: .7em;
+    }
+
+}
+
+
+
+@media (max-width:500px) {
+
+    .hero {
+        background-color: #5cb85c;
+
+        min-height: 12rem;
+        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        /* align-items: space-between; */
+        padding: .7rem 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .heading {
+        text-align: center;
+        width: 100%;
+        font-family: hel-thin;
+        text-transform: uppercase;
+        color: white;
+        font-size: 1rem;
+        font-weight: normal;
+        display: flex;
+        justify-content: center;
+
+        /* text-decoration: underline; */
+    }
+
+    .heading h1 {
+        padding: 0rem 1.7rem;
+        border-radius: 5rem;
+        background-color: white;
+        color: black;
+        width: fit-content;
+    }
+
+
+
+    .hero button {
+        padding: 0.625rem 1.25rem;
+        /* 10px 20px */
+        background-color: white;
+        color: black;
+        border: none;
+        border-radius: 0.25rem;
+        /* 4px */
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-family: hel;
+
+        &:hover {
+            background-color: rgb(219, 219, 219);
+        }
+    }
+
+    .hero .text {
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: space-between;
+        height: 14vh;
+        padding-top: 2rem;
+        text-align: left;
+
+    }
+
+    .hero .text .sub-text-1 {
+        /* display: flex;
+        align-items: start;
+        flex-direction: column; */
+        text-align: left;
+    }
+
+    .hero .text .sub-text-2 {
+        display: flex;
+        align-items: end;
+    }
+
+    .hero .text .sub-text-1 p {
+        margin-top: auto;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: normal;
+        position: relative;
+        font-family: hel-thin;
+        /* line-height: .1rem; */
+
+        /* left: 8rem; */
+    }
+
+
+}
+
+
+
+
+@media (max-width:350px) {
+    main {
+        padding: .5rem;
+        /* 20px */
+    }
+
+    .section-2 {
+        font-size: 21px;
+    }
+
+    .section-2 .edit-btn {
+        padding: 0.4rem .9rem;
+        font-size: 12px;
+        color: #fff;
+        background-color: #28a745;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-driver-list {
+        gap: .2em;
+    }
+
+    .section-2 .add-btn,
+    .section-2 .search-btn {
+        padding: 0.4rem .7rem;
+        font-size: 12px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
 }

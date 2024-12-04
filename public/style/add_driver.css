@@ -70,9 +70,31 @@ body {
 }
 
 .hero{
-    background-color: var(--secondary-color);
-    min-height: 17vh;
+    background-color: #ddd;
+    background-color: #5cb85c;
+    min-height: 17vh;   
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: end;
+    padding: .7rem 2rem;
 }
+
+.hero button{
+    background-color: #ffffff;
+    color: black;
+    padding: .4rem .6rem;
+    font-size: .8rem;
+    transition: all .4s ease ;
+
+    font-family: hel;
+    font-weight: normal;
+    &:hover{
+        background-color: rgb(219, 219, 219);
+    }
+}
+
+
 /* General styling for the form and sections */
 .section-1 {
     padding: 1.25rem; /* 20px */

@@ -1,3 +1,5 @@
+
+
 function previewImage(event, previewId) {
     const file = event.target.files[0];
     const preview = document.getElementById(previewId);

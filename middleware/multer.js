@@ -1,4 +1,7 @@
 const multer = require('multer');
+const sharp = require('sharp');
+
+// Set up multer for memory storage
 const upload = multer({
     storage: multer.memoryStorage(),
     fileFilter: (req, file, cb) => {
@@ -10,37 +13,50 @@ const upload = multer({
     },
 });
 
-module.exports = upload;
+module.exports = (req, res, next) => {
+    upload.fields([
+        { name: "photo", maxCount: 1 },
+        { name: "license-front", maxCount: 1 },
+        { name: "license-back", maxCount: 1 },
+        { name: "ID_confirm", maxCount: 1 },
+        { name: "cnic-front", maxCount: 1 },
+        { name: "cnic-back", maxCount: 1 },
+        { name: "vehicle-photo", maxCount: 1 }
+    ])(req, res, (err) => {
+        if (err) {
+            return next(err); // Pass any multer errors to the next handler
+        }
 
+        // Check and compress images (resize and compress to a smaller size)
+        const compressImage = (fieldName) => {
+            if (req.files && req.files[fieldName]) {
+                const file = req.files[fieldName][0];
 
+                // Compress using sharp
+                sharp(file.buffer)
+                    .resize(800) // Resize to 800px width (adjust as needed)
+                    .jpeg({ quality: 80 }) // Compress and set JPEG quality
+                    .toBuffer()
+                    .then((data) => {
+                        // Replace original buffer with compressed image buffer
+                        file.buffer = data;
+                    })
+                    .catch((err) => {
+                        return next(err); // Pass any sharp errors to the next handler
+                    });
+            }
+        };
 
+        // Apply compression to each image field
+        compressImage('photo');
+        compressImage('license-front');
+        compressImage('license-back');
+        compressImage('ID_confirm');
+        compressImage('cnic-front');
+        compressImage('cnic-back');
+        compressImage('vehicle-photo');
 
-
-
-
-
-
-
-
-
-
-
-
-
-// const express = require('express');
-// const multer = require('multer');
-// const cloudinary = require('cloudinary').v2;
-// // const cloudinaryStorage = require('multer-storage-cloudinary');
-
-
-
-// const storage= multer.diskStorage({
-//     filename:(req,file,cb)=>{
-//         // cb(null,Date.now()+file.originalname),
-//         cb(null,file.originalname)
-//     }
-// })
-
-// const upload=multer({storage:storage})
-
-// module.exports=upload
+        // Proceed to next middleware or route handler
+        next();
+    });
+};

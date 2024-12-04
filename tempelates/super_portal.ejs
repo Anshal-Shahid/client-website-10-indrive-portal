@@ -14,19 +14,29 @@
 <body>
     <main>
         <div class="hero">
-            <h1 style="text-align: center;">ZUBAIR</h1>
+            <div class="heading">
+                <h1>Driver Portal</h1>
+            </div>
+           
+                <div class="text">
+                    <div class="sub-text-1">
+                        <p>Total drivers: <%= completeDriver %></p>
+                        <p>Drivers shown: <%= totalDrivers  %></p>
+                    </div>
+                    <div class="sub-text-2">
+
+                     
+                        <div class="btn">
+                            <button onclick="addDriver()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+               
+          
         </div>
         <section class="section-1">
-            <div class="section-1-header">
-                <div class="text">
-
-                </div>
-
-                <div class="btn">
-                    <button onclick="addDriver()">Add</button>
-                </div>
-            </div>
-
+        
             <div class="driver-list">
                 <!-- Header Row -->
                 <div class="driver-row header">
@@ -36,7 +46,7 @@
                     <div class="driver-item">Phone</div>
                     <div class="driver-item">First Name</div>
                     <div class="driver-item">Last Name</div>
-                    <div class="driver-item">State</div>
+                    <div class="driver-item">Status</div>
                     <div class="driver-item">Activity</div>
                     <div class="driver-item">City</div>
                     <div class="driver-item">Country</div>
@@ -68,7 +78,7 @@
                     </div>
                     <div class="driver-item filter-item">
                         <select id="filter-state">
-                            <option value="">Select State</option>
+                            <option value="">Select Status</option>
                             <option value="accept">Accept</option>
                             <option value="decline">Decline</option>
                             <option value="idle">Idle</option>
@@ -135,15 +145,24 @@
                         <div class="driver-item">
                             <%= driver.country %>
                         </div>
-                        <div class="driver-item">
-                            <%= driver.recruitmentApprovalDate ? new
-                                Date(driver.recruitmentApprovalDate).toLocaleString('en-US', { timeZone: 'Asia/Karachi'
-                                }).replace(',', '' ).substring(0, 16) : '' %>
+                        <div class="driver-item date">
+                            <%= driver.recruitmentApprovalDate 
+                                ? new Date(driver.recruitmentApprovalDate).toLocaleString('en-GB', { timeZone: 'Asia/Karachi' })
+                                    .replace(',', '') // Removes the comma
+                                    .replace(/:\d{2}\s/, ' ') // Removes seconds and the colon after minutes
+                                : '' %>
                         </div>
-                        <div class="driver-item">
-                            <%= driver.dateOfRecruitment ? new Date(driver.dateOfRecruitment).toLocaleString('en-US', {
-                                timeZone: 'Asia/Karachi' }).replace(',', '' ).substring(0, 16) : '' %>
+                        <div class="driver-item date">
+                            <%= driver.dateOfRecruitment 
+                                ? new Date(driver.dateOfRecruitment).toLocaleString('en-GB', { timeZone: 'Asia/Karachi' }) // Use 'en-GB' for DD/MM/YYYY format
+                                    .replace(',', '') // Removes the comma
+                                    .replace(/:\d{2}\s/, ' ') // Removes seconds and the colon after minutes
+                                : '' %>
                         </div>
+                        
+                        
+                        
+                        
                         <div class="driver-item">
                             <%= driver.recruited %>
                         </div>

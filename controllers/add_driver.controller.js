@@ -31,7 +31,7 @@ const add_driver = asyncHandler(async (req, res) => {
         cnicBack_img,
         vehiclePhoto_img,
         recruitmentApprovalDate,
-        dateOfRecruitment,
+        // dateOfRecruitment,
     } = req.body;
 
 
@@ -40,9 +40,9 @@ const add_driver = asyncHandler(async (req, res) => {
         ? moment(recruitmentApprovalDate).format("YYYY-MM-DD HH:mm:ss")
         : null;
 
-    const formattedDateOfRecruitment = dateOfRecruitment
-        ? moment(dateOfRecruitment).format("YYYY-MM-DD HH:mm:ss")
-        : null;
+    // const formattedDateOfRecruitment = dateOfRecruitment
+    //     ? moment(dateOfRecruitment).format("YYYY-MM-DD HH:mm:ss")
+    //     : null;
 
 
 
@@ -73,10 +73,11 @@ const add_driver = asyncHandler(async (req, res) => {
         const fileFields = [
             { field: "photo", name: "photo_img" },
             { field: "license-front", name: "licenseFront_img" },
+            { field: "license-back", name: "licenseBack_img" }, // Add this line
             { field: "ID_confirm", name: "IDConfirm_img" },
             { field: "cnic-front", name: "cnicFront_img" },
             { field: "cnic-back", name: "cnicBack_img" },
-            { field: "vehicle-photo", name: "vehiclePhoto_img" }
+            { field: "vehicle-photo", name: "vehiclePhoto_img" },
         ];
 
         for (const { field, name } of fileFields) {
@@ -121,28 +122,25 @@ const add_driver = asyncHandler(async (req, res) => {
         firstName,
         lastName,
         recruitmentApprovalDate: formattedRecruitmentApprovalDate,
-        dateOfRecruitment: formattedDateOfRecruitment,
+        // dateOfRecruitment: formattedDateOfRecruitment,
         birthDate,
         gender,
         driverLicenseNumber,
         licenseFront_img: uploadedImages[1],
-        licenseBack_img: null,  // Set to null if no back image is uploaded
+        licenseBack_img: uploadedImages[2], // Update index
         registrationPlate,
-        vehiclePhoto_img: uploadedImages[5],
+        vehiclePhoto_img: uploadedImages[6],
         cnic,
-        IDConfirm_img: uploadedImages[2],
+        IDConfirm_img: uploadedImages[3],
         photo_img: uploadedImages[0],
-        licenseFront_img: uploadedImages[1],
-        IDConfirm_img: uploadedImages[2],
-        cnicFront_img: uploadedImages[3],
-        cnicBack_img: uploadedImages[4],
-        vehiclePhoto_img: uploadedImages[5],
-
+        cnicFront_img: uploadedImages[4],
+        cnicBack_img: uploadedImages[5],
     });
+    
 
     console.log("Driver created:", driver);
 
-    res.status(201).redirect("/add_driver");
+    res.status(201).redirect("/");
 });
 
 const add_driver_page = (req, res) => {

@@ -51,6 +51,8 @@ const super_portal = asyncHandler(async (req, res, next) => {
             };
         }
 
+        const completeDriver = await Driver.countDocuments(); 
+
         // Fetch the total count of drivers matching the filters
         const totalDrivers = await Driver.countDocuments(filters);
         const totalPages = Math.ceil(totalDrivers / limit); // Calculate total number of pages
@@ -66,7 +68,9 @@ const super_portal = asyncHandler(async (req, res, next) => {
             drivers,
             currentPage: page, // The current page number
             totalPages,        // Total number of pages
-            limit              // Number of drivers per page
+            limit,
+            totalDrivers,      // Total number of drivers (without filters)
+            completeDriver,               // Number of drivers per page
         });
     } catch (error) {
         console.error("Error in super_portal controller:", error);

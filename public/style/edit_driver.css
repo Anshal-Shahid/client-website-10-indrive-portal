@@ -60,61 +60,119 @@ body {
     font-family: hel;
 }
 
-/* Base settings with font-size dependent on the viewport width */
-html {
-    font-size: 2vw; /* Base font size in px */
+main{
+    
 }
 
 body {
-    font-size: 1rem; /* This will be 16px now based on html font size */
+    font-size: 1rem;
 }
 
-.hero{
-    background-color: var(--secondary-color);
+
+.hero {
+    background-color: #5cb85c;
+    
     min-height: 17vh;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: space-between; */
+    padding: .7rem 2rem;
 }
+
+.hero button {
+    background-color: #ffffff;
+    color: black;
+    padding: .4rem .6rem;
+    font-size: .8rem;
+    transition: all .4s ease;
+
+    font-family: hel;
+    font-weight: normal;
+
+    &:hover {
+        background-color: rgb(219, 219, 219);
+    }
+}
+
+.hero .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 14vh;
+}
+
+.hero .text p {
+    /* margin-top: auto; */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: normal;
+    position: relative;
+    font-family: hel-thin;
+    /* left: 8rem; */
+}
+
+
+
+
+
+
 /* General styling for the form and sections */
 .section-1 {
-    padding: 1.25rem; /* 20px */
+    padding: 1.25rem;
+    /* 20px */
     background-color: #f4f4f4;
 }
 
 .input-con {
-    max-width: 33.33rem; /* 800px */
+    max-width: 33.33rem;
+    /* 800px */
     margin: 0 auto;
 }
 
 .input {
-    margin-bottom: 0.625rem; /* 10px */
+    margin-bottom: 0.625rem;
+    /* 10px */
 }
 
 label {
     display: block;
     font-weight: normal;
-    margin-bottom: 0.3125rem; /* 5px */
+    margin-bottom: 0.3125rem;
+    /* 5px */
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
-    padding: 0.5rem; /* 8px */
-    margin-top: 0.3125rem; /* 5px */
+    padding: 0.5rem;
+    /* 8px */
+    margin-top: 0.3125rem;
+    /* 5px */
     border: 1px solid #ccc;
-    border-radius: 0.25rem; /* 4px */
-   
+    border-radius: 0.25rem;
+    /* 4px */
+
 
 }
-input,textarea{
-    font-size: .6rem     ;
+
+input,
+textarea {
+    font-size: .6rem;
 }
-input::placeholder{
-    font-size: .6rem     ;
+
+input::placeholder {
+    font-size: .6rem;
 }
+
 button {
-    padding: 0.625rem 1.25rem; /* 10px 20px */
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
     background-color: #5cb85c;
     color: white;
     border: none;
-    border-radius: 0.25rem; /* 4px */
+    border-radius: 0.25rem;
+    /* 4px */
     cursor: pointer;
 }
 
@@ -126,30 +184,36 @@ button:hover {
 .input.img {
     position: relative;
     border: 1px solid #ccc;
-    padding: .4rem  ;
+    padding: .4rem;
     border-radius: .4rem;
 }
 
 .input.img img {
     display: none;
-    max-width: 12.5rem; /* 200px */
-    margin-top: 0.625rem; /* 10px */
+    max-width: 12.5rem;
+    /* 200px */
+    margin-top: 0.625rem;
+    /* 10px */
 }
 
 .input.img input[type="file"] {
     display: block;
-    margin-bottom: 0.625rem; /* 10px */
+    margin-bottom: 0.625rem;
+    /* 10px */
 }
 
 /* Input field focus */
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     border-color: #66afe9;
     outline: none;
 }
 
 /* Optional: To give spacing between sections */
-.input-con > div {
-    margin-bottom: 0.625rem; /* 10px */
+.input-con>div {
+    margin-bottom: 0.625rem;
+    /* 10px */
 }
 
 
@@ -164,45 +228,65 @@ input:focus, select:focus, textarea:focus {
 /* When the screen width is less than 768px (Tablets and smaller devices) */
 @media (max-width: 768px) {
     html {
-        font-size: 14px; /* Adjust font-size for smaller screens */
+        font-size: 20px;
+        /* Adjust font-size for smaller screens */
     }
+
     .input-con {
-        max-width: 100%; /* Allow form elements to take full width */
-        padding: 16px; /* Slightly reduce padding for small screens */
+        max-width: 100%;
+        /* Allow form elements to take full width */
+        padding: 16px;
+        /* Slightly reduce padding for small screens */
     }
+
     .section-1 {
         padding: 16px;
     }
+
     button {
-        padding: 10px 20px; /* Adjust button padding for small screens */
+        padding: 10px 20px;
+        /* Adjust button padding for small screens */
     }
+
     .input {
-        margin-bottom: 16px; /* Increase bottom margin for better spacing */
+        margin-bottom: 16px;
+        /* Increase bottom margin for better spacing */
     }
 }
 
 /* When the screen width is less than 480px (Mobile devices) */
 @media (max-width: 480px) {
     html {
-        font-size: 12px; /* Further reduce font-size for very small screens */
+        font-size: 16px;
+        /* Further reduce font-size for very small screens */
     }
-    .section-1{
+
+    .section-1 {
         padding: 1.25rem 0.2rem;
     }
+
     .input-con {
         max-width: 100%;
-        padding: 12px 8px; /* Adjust padding for mobile screens */
+        padding: 12px 8px;
+        /* Adjust padding for mobile screens */
     }
+
     button {
         padding: 8px 16px;
     }
+
     .input {
-        margin-bottom: 20px; /* Ensure input fields are well-spaced */
+        margin-bottom: 20px;
+        /* Ensure input fields are well-spaced */
     }
+
     .input.img img {
-        max-width: 150px; /* Smaller image preview on mobile */
+        max-width: 150px;
+        /* Smaller image preview on mobile */
     }
+
     .input img input[type="file"] {
-        padding: 8px; /* Adjust file input padding for mobile */
+        padding: 8px;
+        /* Adjust file input padding for mobile */
     }
 }
