@@ -22,39 +22,41 @@ module.exports = (req, res, next) => {
         { name: "cnic-front", maxCount: 1 },
         { name: "cnic-back", maxCount: 1 },
         { name: "vehicle-photo", maxCount: 1 }
-    ])(req, res, (err) => {
+    ])(req, res, async (err) => { // Notice the async here
         if (err) {
             return next(err); // Pass any multer errors to the next handler
         }
 
         // Check and compress images (resize and compress to a smaller size)
-        const compressImage = (fieldName) => {
+        const compressImage = async (fieldName) => {
             if (req.files && req.files[fieldName]) {
                 const file = req.files[fieldName][0];
 
                 // Compress using sharp
-                sharp(file.buffer)
-                    .resize(800) // Resize to 800px width (adjust as needed)
-                    .jpeg({ quality: 80 }) // Compress and set JPEG quality
-                    .toBuffer()
-                    .then((data) => {
-                        // Replace original buffer with compressed image buffer
-                        file.buffer = data;
-                    })
-                    .catch((err) => {
-                        return next(err); // Pass any sharp errors to the next handler
-                    });
+                try {
+                    const compressedBuffer = await sharp(file.buffer)
+                        .resize(800) // Resize to 800px width (adjust as needed)
+                        .jpeg({ quality: 80 }) // Compress and set JPEG quality
+                        .toBuffer();
+
+                    // Replace original buffer with compressed image buffer
+                    file.buffer = compressedBuffer;
+                } catch (err) {
+                    return next(err); // Pass any sharp errors to the next handler
+                }
             }
         };
 
         // Apply compression to each image field
-        compressImage('photo');
-        compressImage('license-front');
-        compressImage('license-back');
-        compressImage('ID_confirm');
-        compressImage('cnic-front');
-        compressImage('cnic-back');
-        compressImage('vehicle-photo');
+        await Promise.all([
+            compressImage('photo'),
+            compressImage('license-front'),
+            compressImage('license-back'),
+            compressImage('ID_confirm'),
+            compressImage('cnic-front'),
+            compressImage('cnic-back'),
+            compressImage('vehicle-photo')
+        ]);
 
         // Proceed to next middleware or route handler
         next();
