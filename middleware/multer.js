@@ -36,7 +36,7 @@ module.exports = (req, res, next) => {
                 try {
                     const compressedBuffer = await sharp(file.buffer)
                         .resize(800) // Resize to 800px width (adjust as needed)
-                        .jpeg({ quality: 80 }) // Compress and set JPEG quality
+                        .jpeg({ quality: 70 }) // Compress and set JPEG quality
                         .toBuffer();
 
                     // Replace original buffer with compressed image buffer
