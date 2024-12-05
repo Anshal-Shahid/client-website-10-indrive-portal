@@ -178,6 +178,37 @@ input:focus, select:focus, textarea:focus {
 
 
 
+/* phone number */
+
+.phone-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.phone-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-phone-btn, .remove-phone-btn {
+    padding: .15rem .3rem;
+    font-size: .7rem;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    top: .15rem;
+}
+.remove-phone-btn{
+     background-color: #dc3545;
+}
+
 
 
 

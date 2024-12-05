@@ -9,7 +9,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
         { id: "filter-phone", key: "phone" },
         { id: "filter-first-name", key: "firstName" },
         { id: "filter-last-name", key: "lastName" },
-        { id: "filter-state", key: "state" },
+        { id: "filter-state", key: "state" },   
         { id: "filter-activity", key: "activity" },
         { id: "filter-city", key: "city" },
         { id: "filter-country", key: "country" },
@@ -37,8 +37,19 @@ document.getElementById("search-btn").addEventListener("click", () => {
 
 
 
+document.querySelector(".heading").addEventListener("click", () => {
+    // Redirect to base route without filters
+    
+    window.location.href = `/`;
+});
 document.querySelector(".refresh").addEventListener("click", () => {
     // Redirect to base route without filters
+    
+    window.location.href = `/portal`;
+});
+document.querySelector(".refresh2").addEventListener("click", () => {
+    // Redirect to base route without filters
+    
     window.location.href = `/portal`;
 });
 
@@ -81,6 +92,15 @@ function submitSearch() {
         { id: "popup-last-name", key: "lastName" },
         { id: "popup-state", key: "state" },
         { id: "popup-city", key: "city" },
+        { id: "popup-transport-id", key: "transportId" },
+        { id: "popup-service-id", key: "serviceId" },
+        { id: "popup-activity", key: "activity" },
+        { id: "popup-country", key: "country" },
+        { id: "popup-recruitment-approval-start", key: "recruitmentApprovalStart" },
+        { id: "popup-recruitment-approval-end", key: "recruitmentApprovalEnd" },
+        { id: "popup-recruitment-date-start", key: "recruitmentDateStart" },
+        { id: "popup-recruitment-date-end", key: "recruitmentDateEnd" },
+        { id: "popup-recruited", key: "recruited" }
     ];
 
     // Append non-empty values to the params

@@ -35,6 +35,18 @@ const add_driver = asyncHandler(async (req, res) => {
     } = req.body;
 
 
+    // Process multiple phone numbers if provided
+    if (Array.isArray(phone)) {
+        phone = phone.filter((num) => num && num.trim() !== ""); // Remove empty or invalid phone numbers
+        phone = phone.length > 0 ? phone : null; // Set to null if no valid phone numbers
+    } else {
+        phone = phone === "" || !phone ? null : phone; // Single phone input case
+    }
+
+
+
+
+
     // Format the dates
     const formattedRecruitmentApprovalDate = recruitmentApprovalDate
         ? moment(recruitmentApprovalDate).format("YYYY-MM-DD HH:mm:ss")
@@ -136,7 +148,7 @@ const add_driver = asyncHandler(async (req, res) => {
         cnicFront_img: uploadedImages[4],
         cnicBack_img: uploadedImages[5],
     });
-    
+
 
     console.log("Driver created:", driver);
 

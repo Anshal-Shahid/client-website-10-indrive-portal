@@ -539,6 +539,24 @@ main {
         background-color: #f1f1f1;
         border-bottom: 1px solid #ddd;
     }
+    .section-2 .header-div .buttons{
+        /* display: flex; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    .section-2 .header-div .buttons i{
+        position: relative;
+        top: .2rem;
+        right: .4rem;
+        padding: .2rem;
+        border-radius: .6rem;
+        &:hover{
+            background-color: rgb(203, 202, 202);
+        }
+    }
 
     .section-2 .add-btn,
     .section-2 .search-btn {
@@ -608,13 +626,15 @@ main {
         background-color: #fff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
-        padding: 2rem;
+        padding: 1rem;
         z-index: 1000;
         width: 90%;
         max-width: 500px;
     }
 
     .section-2 .popup-content {
+        max-height: 80vh; /* Adjust the height according to your needs */
+        overflow-y: auto; /* Enable vertical scrolling */
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -622,10 +642,12 @@ main {
 
     .section-2 .popup-content h3 {
         margin-bottom: 1rem;
+        /* font-size: rem; */
     }
 
     .section-2 .popup-content label {
-        font-weight: bold;
+        font-weight: normal;
+        font-size: 1.4rem;
         margin-bottom: 0.5rem;
     }
 
@@ -635,6 +657,18 @@ main {
         border: 1px solid #ddd;
         border-radius: 4px;
         width: 100%;
+        margin-bottom: .8rem;
+    }
+    .section-2 .popup-date{
+        background-color: rgb(207, 207, 207);
+        margin-bottom: 2rem;
+        border-radius: .7rem;
+        padding: .14rem .3rem;
+        border: 1px solid rgb(111, 111, 111);
+    }
+    .popup-date p{
+        font-size: 1.6rem;
+        text-align: center;
     }
 
     .section-2 .popup-content button {
@@ -812,4 +846,17 @@ main {
         transition: background-color 0.3s ease;
     }
 
+
+    .section-2 .popup-content label {
+        font-weight: normal;
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+    }
+    .section-2 .search-popup{
+        padding: 1rem;
+        width: 95%;
+    }
+    .section-2 #searchForm button{
+        margin-top: 1.5rem !important;
+    }
 }

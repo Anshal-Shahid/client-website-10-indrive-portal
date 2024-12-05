@@ -29,11 +29,34 @@
         <section class="section-1">
             <form action="/save_driver" method="POST" enctype="multipart/form-data">
                 <div class="input-con">
-                    <div class="phone input">
+                    <div class="phone-numbers phone input">
                         <label for="phone">Phone</label>
-                        <input type="text" name="phone" id="phone" placeholder="Enter Phone Number"
-                            value="<%= driver.phone %>">
+                        <!-- Iterate over the driver's phone numbers -->
+                        <% if (driver.phone.length === 1) { %>
+                            <!-- Show the first phone number and the add button -->
+                            <div class="phone-wrapper">
+                                <input type="text" name="phone[]" value="<%= driver.phone[0] %>" placeholder="Enter Phone Number">
+                                <button type="button" class="add-phone-btn" onclick="addPhoneInput()">+</button>
+                            </div>
+                        <% } else { %>
+                            <!-- If multiple phone numbers, show each phone input and the remove button -->
+                            <% driver.phone.forEach((phone, index) => { %>
+                                <div class="phone-wrapper">
+                                    <input type="text" name="phone[]" value="<%= phone %>" placeholder="Enter Phone Number">
+                                    <% if (index === 0) { %>
+                                        <!-- Show add button only if this is the first phone -->
+                                        <button type="button" class="add-phone-btn" onclick="addPhoneInput()">+</button>
+                                    <% } else { %>
+                                        <!-- Show remove button for other phone numbers -->
+                                        <button type="button" class="remove-phone-btn" onclick="removePhoneInput(this)">-</button>
+                                    <% } %>
+                                </div>
+                            <% }); %>
+                        <% } %>
                     </div>
+                    
+                    
+                    
 
                     <div class="email input">
                         <label for="email">Email</label>

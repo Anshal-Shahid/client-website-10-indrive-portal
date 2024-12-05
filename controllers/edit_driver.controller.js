@@ -12,6 +12,11 @@ const edit_driver_page = async (req, res) => {
             return res.status(404).send("Driver not found");
         }
 
+        // If phone is a single string, convert it into an array for consistency
+        if (typeof driver.phone === 'string') {
+            driver.phone = [driver.phone];
+        }
+
         // Render the edit page with driver details
         res.render("edit_driver", {
             driver, // Pass the driver data to the EJS template

@@ -125,7 +125,7 @@
                             <%= driver.serviceId %>
                         </div>
                         <div class="driver-item">
-                            <%= driver.phone %>
+                            <%= Array.isArray(driver.phone) ? driver.phone[0] : driver.phone %>
                         </div>
                         <div class="driver-item">
                             <%= driver.firstName %>
@@ -178,7 +178,11 @@
             <!-- Mobile Driver List -->
             <div class="header-div">
                 <button class="add-btn" onclick="addDriver()">Add</button>
-                <button class="search-btn" onclick="openSearchPopup()">Search</button>
+                <div class="buttons">
+                    <i class="fa-solid fa-arrows-rotate refresh2"></i>
+
+                    <button class="search-btn" onclick="openSearchPopup()">Search</button>
+                </div>
             </div>
 
             <div class="mobile-driver-list">
@@ -189,7 +193,7 @@
                                 <%= driver.userId %>
                             </div>
                             <div><strong>Phone:</strong>
-                                <%= driver.phone %>
+                                <%= Array.isArray(driver.phone) ? driver.phone[0] : driver.phone %>
                             </div>
                             <div><strong>Name:</strong>
                                 <%= driver.firstName %>
@@ -215,29 +219,61 @@
                     <h3>Filter Drivers</h3>
                     <form id="searchForm">
                         <label for="popup-user-id">User ID:</label>
-                        <input type="text" id="popup-user-id" placeholder="Enter User ID">
-
+                        <input type="text" id="popup-user-id" placeholder="Search User ID">
+                    
+                        <label for="popup-transport-id">Transport ID:</label>
+                        <input type="text" id="popup-transport-id" placeholder="Search Transport ID">
+                    
+                        <label for="popup-service-id">Service ID:</label>
+                        <input type="text" id="popup-service-id" placeholder="Search Service ID">
+                    
                         <label for="popup-phone">Phone:</label>
-                        <input type="text" id="popup-phone" placeholder="Enter Phone">
-
+                        <input type="text" id="popup-phone" placeholder="Search Phone">
+                    
                         <label for="popup-first-name">First Name:</label>
-                        <input type="text" id="popup-first-name" placeholder="Enter First Name">
-
+                        <input type="text" id="popup-first-name" placeholder="Search First Name">
+                    
                         <label for="popup-last-name">Last Name:</label>
-                        <input type="text" id="popup-last-name" placeholder="Enter Last Name">
-
+                        <input type="text" id="popup-last-name" placeholder="Search Last Name">
+                    
                         <label for="popup-state">State:</label>
                         <select id="popup-state">
-                            <option value="">Select State</option>
+                            <option value="">Select Status</option>
                             <option value="accept">Accept</option>
                             <option value="decline">Decline</option>
                             <option value="idle">Idle</option>
                         </select>
-
+                    
+                        <label for="popup-activity">Activity:</label>
+                        <input type="text" id="popup-activity" placeholder="Search Activity">
+                    
                         <label for="popup-city">City:</label>
-                        <input type="text" id="popup-city" placeholder="Enter City">
+                        <input type="text" id="popup-city" placeholder="Search City">
+                    
+                        <label for="popup-country">Country:</label>
+                        <input type="text" id="popup-country" placeholder="Search Country">
+                        <div class="popup-date">
 
-                        <button type="button" onclick="submitSearch()">Find</button>
+                            <label for="popup-recruitment-approval-start">Recruitment Approval Start Date:</label>
+                            <input type="date" id="popup-recruitment-approval-start" placeholder="Start Date">
+                            <p>TO</p>
+                            <input type="date" id="popup-recruitment-approval-end" placeholder="End Date">
+                        </div>
+                    
+
+                        <div class="popup-date">
+
+                            <label for="popup-recruitment-date-start">Recruitment Date Start:</label>
+                            <input type="date" id="popup-recruitment-date-start" placeholder="Start Date">
+                            <p>TO</p>
+                            <input type="date" id="popup-recruitment-date-end" placeholder="End Date">
+                        </div>
+
+                    
+                        <label for="popup-recruited">Recruited:</label>
+                        <input type="text" id="popup-recruited" placeholder="Search Recruited">
+
+                        <button type="button find" onclick="submitSearch()">Find</button>
                         <button type="button" class="close-btn" onclick="closeSearchPopup()">Close</button>
                     </form>
                 </div>
