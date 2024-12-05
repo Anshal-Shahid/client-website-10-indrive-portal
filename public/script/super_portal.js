@@ -79,9 +79,9 @@ function addDriver() {
 
 }
 
-
-
-function submitSearch() {
+const find=document.querySelector(".find")
+find.addEventListener("click",()=>{
+    event.preventDefault(); 
     const params = new URLSearchParams();
 
     // Define the filter fields
@@ -106,13 +106,54 @@ function submitSearch() {
     // Append non-empty values to the params
     filters.forEach(({ id, key }) => {
         const value = document.getElementById(id).value.trim();
+        console.log(`Value for ${key}:`, value);
+        
         if (value) {
             params.append(key, value);
         }
     });
-
+    console.log("sdjb");
+    
     // Log or redirect with the query params
     console.log("Query Params:", params.toString()); // For debugging
-    window.location.href = `/portal?${params.toString()}`; // Replace "/search" with your desired route
-    closeSearchPopup(); // Close the popup
-}
+    window.location.href = `/portal?${params.toString()}`; 
+    closeSearchPopup(); 
+})
+// function submitSearch() {
+//     const params = new URLSearchParams();
+
+//     // Define the filter fields
+//     const filters = [
+//         { id: "popup-user-id", key: "userId" },
+//         { id: "popup-phone", key: "phone" },
+//         { id: "popup-first-name", key: "firstName" },
+//         { id: "popup-last-name", key: "lastName" },
+//         { id: "popup-state", key: "state" },
+//         { id: "popup-city", key: "city" },
+//         { id: "popup-transport-id", key: "transportId" },
+//         { id: "popup-service-id", key: "serviceId" },
+//         { id: "popup-activity", key: "activity" },
+//         { id: "popup-country", key: "country" },
+//         { id: "popup-recruitment-approval-start", key: "recruitmentApprovalStart" },
+//         { id: "popup-recruitment-approval-end", key: "recruitmentApprovalEnd" },
+//         { id: "popup-recruitment-date-start", key: "recruitmentDateStart" },
+//         { id: "popup-recruitment-date-end", key: "recruitmentDateEnd" },
+//         { id: "popup-recruited", key: "recruited" }
+//     ];
+
+//     // Append non-empty values to the params
+//     filters.forEach(({ id, key }) => {
+//         const value = document.getElementById(id).value.trim();
+//         console.log(value );
+        
+//         if (value) {
+//             params.append(key, value);
+//         }
+//     });
+//     console.log("sdjb");
+    
+//     // Log or redirect with the query params
+//     console.log("Query Params:", params.toString()); // For debugging
+//     // window.location.href = `/portal?${params.toString()}`; 
+//     closeSearchPopup(); // Close the popup
+// }

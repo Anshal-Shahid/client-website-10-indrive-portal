@@ -4,7 +4,8 @@ const Driver = require("../model/driverModel.js");
 const super_portal = asyncHandler(async (req, res, next) => {
     try {
         const filters = {};
-
+        console.log("aaiyye");
+        
         // Pagination variables
         const limit = 20; // Number of drivers per page
         const page = parseInt(req.query.page) || 1; // Current page number (default to 1)
