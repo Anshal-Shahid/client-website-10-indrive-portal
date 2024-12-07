@@ -295,7 +295,7 @@ main {
     overflow-wrap: break-word;
 }
 
-.section-1 .filter #filter-state {
+.section-1 .filter #filter-state ,#filter-transport-id{
     background-color: rgb(204, 203, 203);
     border: none;
     width: 100%;

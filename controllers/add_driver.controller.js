@@ -15,6 +15,9 @@ const add_driver = asyncHandler(async (req, res) => {
         state,
         createdDate,
         transportId,
+        country,
+        activity,
+        serviceId,
         firstName,
         lastName,
         birthDate,
@@ -70,6 +73,9 @@ const add_driver = asyncHandler(async (req, res) => {
     state = state === "" || !state ? null : state;
     createdDate = createdDate === "" || !createdDate ? null : createdDate;
     transportId = transportId === "" || !transportId ? null : transportId;
+    activity = activity === "" || !activity ? null : activity;
+    country= country === "" || !country ? null : country;
+    serviceId= serviceId === "" || !serviceId ? null : serviceId;
     firstName = firstName === "" || !firstName ? null : firstName;
     lastName = lastName === "" || !lastName ? null : lastName;
     birthDate = birthDate === "" || !birthDate ? null : birthDate;
@@ -90,6 +96,9 @@ const add_driver = asyncHandler(async (req, res) => {
             { field: "cnic-front", name: "cnicFront_img" },
             { field: "cnic-back", name: "cnicBack_img" },
             { field: "vehicle-photo", name: "vehiclePhoto_img" },
+            { field: "vehicle-paper-front", name: "vehiclePaperFront_img" }, 
+            { field: "vehicle-paper-back", name: "vehiclePaperBack_img" },  
+            { field: "vehicle-back", name: "vehicleBack_img" },  
         ];
 
         for (const { field, name } of fileFields) {
@@ -131,6 +140,9 @@ const add_driver = asyncHandler(async (req, res) => {
         state,
         createdDate,
         transportId,
+        country,
+        activity,
+        serviceId,
         firstName,
         lastName,
         recruitmentApprovalDate: formattedRecruitmentApprovalDate,
@@ -142,6 +154,9 @@ const add_driver = asyncHandler(async (req, res) => {
         licenseBack_img: uploadedImages[2], // Update index
         registrationPlate,
         vehiclePhoto_img: uploadedImages[6],
+        vehiclePaperFront_img: uploadedImages[7], // New field
+        vehiclePaperBack_img: uploadedImages[8],  // New field
+        vehicleBack_img: uploadedImages[9],   
         cnic,
         IDConfirm_img: uploadedImages[3],
         photo_img: uploadedImages[0],

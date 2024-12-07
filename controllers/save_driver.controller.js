@@ -8,15 +8,15 @@ const save_driver = asyncHandler(async (req, res) => {
     const driverId = req.body.id;
 
     // Get other data from the request body
-    const { userId, phone, email, city, reviewedBy, state, createdDate, transportId, firstName, lastName, birthDate, gender, driverLicenseNumber, expiryDate, cnic, registrationPlate, remarks, recruitmentApprovalDate, dateOfRecruitment } = req.body;
+    const { userId, phone, email, city, reviewedBy, state, createdDate, transportId, country, activity, serviceId, firstName, lastName, birthDate, gender, driverLicenseNumber, expiryDate, cnic, registrationPlate, remarks, recruitmentApprovalDate, dateOfRecruitment } = req.body;
     console.log("**********");
-    
+
     console.log(req.body);
-    
+
     console.log("**********");
 
     console.log("Request query parameters:", req.query);
-    
+
 
     // Format the dates
     const formattedRecruitmentApprovalDate = recruitmentApprovalDate
@@ -42,6 +42,14 @@ const save_driver = asyncHandler(async (req, res) => {
         cnicFront_img: driver.cnicFront_img,
         cnicBack_img: driver.cnicBack_img,
         vehiclePhoto_img: driver.vehiclePhoto_img,
+        vehicleBack_img: driver.vehicleBack_img,
+        vehiclePaperFront_img: driver.vehiclePaperFront_img,
+        vehiclePaperBack_img: driver.vehiclePaperBack_img,
+
+
+    //     driver.vehiclePaperFront_img = uploadedImages.vehiclePaperFront_img;
+    // driver.vehicleBackFront_img= uploadedImages.vehiclePaperBack_img;
+    // driver.vehicleBack_img = uploadedImages.vehicleBack_img;
     };
 
     if (req.files) {
@@ -51,7 +59,10 @@ const save_driver = asyncHandler(async (req, res) => {
             { field: "ID_confirm", name: "IDConfirm_img" },
             { field: "cnic-front", name: "cnicFront_img" },
             { field: "cnic-back", name: "cnicBack_img" },
-            { field: "vehicle-photo", name: "vehiclePhoto_img" }
+            { field: "vehicle-photo", name: "vehiclePhoto_img" },
+            { field: "vehicle-paper-front", name: "vehiclePaperFront_img" }, 
+            { field: "vehicle-paper-back", name: "vehiclePaperBack_img" },  
+            { field: "vehicle-back", name: "vehicleBack_img" },  
         ];
 
         // For each field, upload the new file if provided and update the image URL
@@ -90,6 +101,9 @@ const save_driver = asyncHandler(async (req, res) => {
     driver.state = state || driver.state;
     driver.createdDate = createdDate || driver.createdDate;
     driver.transportId = transportId || driver.transportId;
+    driver.country = country || driver.country;
+    driver.activity = activity || driver.activity;
+    driver.serviceId = serviceId || driver.serviceId;
     driver.firstName = firstName || driver.firstName;
     driver.lastName = lastName || driver.lastName;
     driver.recruitmentApprovalDate = formattedRecruitmentApprovalDate || driver.recruitmentApprovalDate;
@@ -109,6 +123,10 @@ const save_driver = asyncHandler(async (req, res) => {
     driver.cnicFront_img = uploadedImages.cnicFront_img;
     driver.cnicBack_img = uploadedImages.cnicBack_img;
     driver.vehiclePhoto_img = uploadedImages.vehiclePhoto_img;
+    driver.vehiclePaperFront_img = uploadedImages.vehiclePaperFront_img;
+    driver.vehiclePaperBack_img= uploadedImages.vehiclePaperBack_img;
+    driver.vehicleBack_img = uploadedImages.vehicleBack_img;
+    
 
     // Save the updated driver info to the database
     await driver.save();

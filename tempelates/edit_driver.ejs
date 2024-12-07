@@ -31,15 +31,10 @@
                 <div class="input-con">
                     <div class="phone-numbers phone input">
                         <label for="phone">Phone</label>
-                        <!-- Iterate over the driver's phone numbers -->
-                        <% if (driver.phone.length === 1) { %>
-                            <!-- Show the first phone number and the add button -->
-                            <div class="phone-wrapper">
-                                <input type="text" name="phone[]" value="<%= driver.phone[0] %>" placeholder="Enter Phone Number">
-                                <button type="button" class="add-phone-btn" onclick="addPhoneInput()">+</button>
-                            </div>
-                        <% } else { %>
-                            <!-- If multiple phone numbers, show each phone input and the remove button -->
+                        
+                        <!-- Check if driver.phone is an array and not empty -->
+                        <% if (Array.isArray(driver.phone) && driver.phone.length > 0) { %>
+                            <!-- If phone numbers are present, display them -->
                             <% driver.phone.forEach((phone, index) => { %>
                                 <div class="phone-wrapper">
                                     <input type="text" name="phone[]" value="<%= phone %>" placeholder="Enter Phone Number">
@@ -52,8 +47,14 @@
                                     <% } %>
                                 </div>
                             <% }); %>
+                        <% } else { %>
+                            <!-- If phone is null, empty, or not provided, show an empty input field -->
+                            <div class="phone-wrapper">
+                                <input type="text" name="phone[]" placeholder="Enter Phone Number">
+                            </div>
                         <% } %>
                     </div>
+                    
                     
                     
                     
@@ -101,6 +102,21 @@
                         <label for="transport-id">Transport ID</label>
                         <input type="text" name="transportId" id="transport-id" placeholder="Enter Transport ID"
                             value="<%= driver.transportId %>">
+                    </div>
+                    <div class="country input">
+                        <label for="country">Country</label>
+                        <input type="text" name="country" id="country" placeholder="Enter Country"
+                            value="<%= driver.country %>">
+                    </div>
+                    <div class="activity input">
+                        <label for="activity">Activity</label>
+                        <input type="text" name="activity" id="activity" placeholder="Enter Activity"
+                            value="<%= driver.activity %>">
+                    </div>
+                    <div class="service-id input">
+                        <label for="service-id">Service ID</label>
+                        <input type="text" name="serviceId" id="service-id" placeholder="Enter Service ID"
+                            value="<%= driver.serviceId %>">
                     </div>
 
                     <div class="input img photo">
@@ -225,6 +241,29 @@
                             placeholder="Enter Registration Plate" value="<%= driver.registrationPlate %>">
                     </div>
 
+
+                    <div class="input img vehicle-paper-front">
+                        <label for="vehicle-paper-front">Vehicle Paper (Front)</label>
+                        <input type="file" name="vehicle-paper-front" id="vehicle-paper-front" onchange="previewImage(event, 'preview-vehicle-paper-front')" aria-label="Upload vehicle paper front">
+                        <% if (driver.vehiclePaperFront_img) { %>
+                            <img id="preview-vehicle-paper-front" src="<%= driver.vehiclePaperFront_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-vehicle-paper-front" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
+                    </div>
+                    
+                    <div class="input img vehicle-paper-back">
+                        <label for="vehicle-paper-back">Vehicle Paper (Back)</label>
+                        <input type="file" name="vehicle-paper-back" id="vehicle-paper-back" onchange="previewImage(event, 'preview-vehicle-paper-back')" aria-label="Upload vehicle paper back">
+                        <% if (driver.vehiclePaperBack_img) { %>
+                            <img id="preview-vehicle-paper-back" src="<%= driver.vehiclePaperBack_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-vehicle-paper-back" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
+                    </div>
+
+
+
                     <div class="input img vehicle-photo">
                         <label for="vehicle-photo">Photo of Your Vehicle</label>
                         <input type="file" name="vehicle-photo" id="vehicle-photo" onchange="previewImage(event, 'preview-vehicle-photo')" aria-label="Upload vehicle photo">
@@ -232,6 +271,15 @@
                             <img id="preview-vehicle-photo" src="<%= driver.vehiclePhoto_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
                         <% } else { %>
                             <img id="preview-vehicle-photo" src="" alt="Image Preview" style="display:none; max-width: 200px;">
+                        <% } %>
+                    </div>
+                    <div class="input img vehicle-back">
+                        <label for="vehicle-back">Vehicle Back Photo</label>
+                        <input type="file" name="vehicle-back" id="vehicle-back" onchange="previewImage(event, 'preview-vehicle-back')" aria-label="Upload vehicle back photo">
+                        <% if (driver.vehicleBack_img) { %>
+                            <img id="preview-vehicle-back" src="<%= driver.vehicleBack_img %>" alt="Image Preview" style="display:block; max-width: 200px;">
+                        <% } else { %>
+                            <img id="preview-vehicle-back" src="" alt="Image Preview" style="display:none; max-width: 200px;">
                         <% } %>
                     </div>
                     <div class="remarks input">

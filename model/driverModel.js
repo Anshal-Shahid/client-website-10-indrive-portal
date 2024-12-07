@@ -8,7 +8,11 @@ const driverSchema = mongoose.Schema({
     reviewedBy: { type: String },
     state: { type: String, enum: ['accept', 'decline', 'idle'], default: 'idle' },
     createdDate: { type: Date, default: Date.now },
-    transportId: { type: String },
+    transportId: { type: String, enum: ['Shamim', 'Saddar', 'Shah Faisal', 'Activity'], default: 'Shamim' },
+    country: { type: String },
+    activity: { type: String },
+    serviceId: { type: String },
+
     photo_img: { type: String },
     firstName: { type: String },
     lastName: { type: String },
@@ -21,6 +25,9 @@ const driverSchema = mongoose.Schema({
     licenseBack_img: { type: String }, // Added licenseBack_img field
     registrationPlate: { type: String },
     vehiclePhoto_img: { type: String },
+    vehiclePaperFront_img: { type: String }, // New field
+    vehiclePaperBack_img: { type: String },  // New field
+    vehicleBack_img: { type: String },       // New field
     cnic: { type: String },
     IDConfirm_img: { type: String },
     cnicFront_img: { type: String },

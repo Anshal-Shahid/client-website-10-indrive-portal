@@ -21,7 +21,10 @@ module.exports = (req, res, next) => {
         { name: "ID_confirm", maxCount: 1 },
         { name: "cnic-front", maxCount: 1 },
         { name: "cnic-back", maxCount: 1 },
-        { name: "vehicle-photo", maxCount: 1 }
+        { name: "vehicle-photo", maxCount: 1 },
+        { name: "vehicle-paper-front", maxCount: 1 }, // Updated to match form
+        { name: "vehicle-paper-back", maxCount: 1 },  // Updated to match form
+        { name: "vehicle-back", maxCount: 1 },        // Updated to match form
     ])(req, res, async (err) => { // Notice the async here
         if (err) {
             return next(err); // Pass any multer errors to the next handler
@@ -35,7 +38,7 @@ module.exports = (req, res, next) => {
                 // Compress using sharp
                 try {
                     const compressedBuffer = await sharp(file.buffer)
-                        .resize(700) // Resize to 800px width (adjust as needed)
+                        .resize(800) // Resize to 800px width (adjust as needed)
                         .jpeg({ quality: 90 }) // Compress and set JPEG quality
                         .toBuffer();
 
@@ -55,7 +58,10 @@ module.exports = (req, res, next) => {
             compressImage('ID_confirm'),
             compressImage('cnic-front'),
             compressImage('cnic-back'),
-            compressImage('vehicle-photo')
+            compressImage('vehicle-photo'),
+            compressImage("vehiclePaperFront"), // New field
+            compressImage("vehiclePaperBack"),  // New field
+            compressImage("vehicleBack"),       // New field
         ]);
 
         // Proceed to next middleware or route handler
